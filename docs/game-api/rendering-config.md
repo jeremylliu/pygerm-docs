@@ -14,8 +14,6 @@ The default constructor for the RenderingConfig class. This constructor initiali
 
 Warning: **The alpha value of clearColor is ignored by the rendering engine.**
 
-```python
-
 ### RenderingConfig(kwargs)
 You can also initialize a RenderingConfig object with a dictionary of values. This is useful for setting multiple values at once. The argument names are the same as the table listed above.
 
