@@ -108,11 +108,100 @@ game.run()
 ### getComponent(type: StaticComponentClass) -> Component
 Queries the actor's components for a component of the given type. If there are multiple of the same type, the first one sorted by component key will be returned. Returns `None` if no component is found.
 
+```python
+import pygerm
+
+class OutputMessage(pygerm.Component):
+    message = "???"
+    def onStart(self):
+        print(self.message) # will print "Hello, World!"
+
+class ModifyOutputMessage(pygerm.Component):
+    def onStart(self):
+        actor = self.actor
+        output_message = actor.getComponent(OutputMessage)
+        output_message.message = "Hello, World!"
+
+actor = pygerm.Actor("actor1", {"1": ModifyOutputMessage(), "2": OutputMessage()})
+scene = pygerm.Scene("scene1", [actor])
+game = pygerm.Game(scene=scene)
+game.run()
+```
+
 ### getComponents(type: StaticComponentClass) -> List\[Component\]
 Queries the actor's components for all components of the given type. Returns an empty list if no components are found.
 
+```python
+import pygerm
+
+class OutputMessage(pygerm.Component):
+    message = "???"
+    def onStart(self):
+        print(self.message) # will print "Hello, World!"
+
+class ModifyOutputMessage(pygerm.Component):
+    count = 0
+    def onStart(self):
+        actor = self.actor
+        output_messages = actor.getComponents(OutputMessage)
+        for m in output_messages:
+            m.message = "Hello, World! " + str(self.count)
+            self.count += 1
+
+actor = pygerm.Actor("actor1", {"1": ModifyOutputMessage(), "2": OutputMessage(), "3": OutputMessage()})
+scene = pygerm.Scene("scene1", [actor])
+game = pygerm.Game(scene=scene)
+game.run()
+```
+
 ### addComponent(component: Component) -> Component
-Adds a component to the actor. Returns a reference to the component that was added.
+Adds a component to the actor. The added component will not begin to run until next frame. Returns a reference to the component that was added.
+
+```python
+import pygerm
+
+class Manager(pygerm.Component):
+    def onUpdate(self):
+        if pygerm.Application.getFrame() == 5:
+            self.actor.addComponent(Spammer())
+        if pygerm.Application.getFrame() == 10:
+            pygerm.Application.quit()
+
+class Spammer(pygerm.Component):
+    def onStart(self):
+        print("Created on frame", pygerm.Application.getFrame())
+    def onUpdate(self):
+        print("Spamming a message on frame", pygerm.Application.getFrame())
+
+actor = pygerm.Actor("actor1", {"1": Manager()})
+scene = pygerm.Scene("scene1", [actor])
+game = pygerm.Game(scene=scene)
+game.run()
+```
 
 ### removeComponent(component: Component) -> None
-Removes a component from the actor, if it exists. This method requires the reference to the component that was added.
+Removes a component from the actor, if it exists. The component will immediately stop running. However, the onDestroy method will not be called until the end of the frame, **not** the instant it was called. This method requires the reference to the component that was added.
+
+```python
+import pygerm
+
+class Manager(pygerm.Component):
+    def onUpdate(self):
+        if pygerm.Application.getFrame() == 5:
+            self.actor.removeComponent(self.actor.getComponent(Spammer))
+        if pygerm.Application.getFrame() == 10:
+            pygerm.Application.quit()
+
+class Spammer(pygerm.Component):
+    def onStart(self):
+        print("Created on frame", pygerm.Application.getFrame())
+    def onUpdate(self):
+        print("Spamming a message on frame", pygerm.Application.getFrame())
+    def onDestroy(self):
+        print("Destroyed on frame", pygerm.Application.getFrame())
+
+actor = pygerm.Actor("actor1", {"1": Manager(), "2": Spammer()})
+scene = pygerm.Scene("scene1", [actor])
+game = pygerm.Game(scene=scene)
+game.run()
+```

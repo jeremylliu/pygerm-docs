@@ -53,7 +53,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Utility Types',
-      items: ["util-types/color"],
+      items: ["util-types/color", "util-types/vec2"],
     }
   ],
 };

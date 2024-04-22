@@ -83,7 +83,7 @@ game.run()
 ```
 
 ## getMousePosition() -> Vec2()
-Returns the current mouse position as a Vec2 object. The x and y value are represented in **pixels**, with the origin at the top left corner of the window.
+Returns the current mouse position as a Vec2 object. The x and y value are represented in **pixels**, with the origin in the top left corner of the window.
 
 ```python
 import pygerm
