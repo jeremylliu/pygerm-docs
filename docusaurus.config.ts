@@ -93,10 +93,10 @@ const config: Config = {
         {
           title: 'Community',
           items: [
-            // {
-            //   label: 'Stack Overflow',
-            //   href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            // },
+            {
+              label: 'Developer Portfolio',
+              href: 'https://jeremylliu.com',
+            },
             // {
             //   label: 'Discord',
             //   href: 'https://discordapp.com/invite/docusaurus',
@@ -115,9 +115,13 @@ const config: Config = {
             //   to: '/blog',
             // },
             {
-              label: 'GitHub',
+              label: 'Engine GitHub',
               href: 'https://github.com/jeremylliu/pygerm',
             },
+            {
+              label: 'Documentation GitHub',
+              href: 'https://github.com/jeremylliu/pygerm-docs',
+            }
           ],
         },
       ],
