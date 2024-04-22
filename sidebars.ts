@@ -21,9 +21,39 @@ const sidebars: SidebarsConfig = {
     'getting-started',
     {
       type: 'category',
-      label: 'Game API',
+      label: 'Game',
       items: ['game-api/game', "game-api/game-config", "game-api/rendering-config"],
     },
+    {
+      type: 'category',
+      label: 'Scene',
+      items: ["scene-api/scene", "scene-api/scene-api"],
+    },
+    {
+      type: 'category',
+      label: 'Actor',
+      items: ["actor-api/actor", "actor-api/actor-api"],
+    },
+    {
+      type: 'category',
+      label: 'Component',
+      items: ["component-api/getting-started", "component-api/component"],
+    },
+    {
+      type: 'category',
+      label: 'Provided Components',
+      items: ["prebuilt-components/rigidbody"],
+    },
+    'input',
+    'camera',
+    'text',
+    'image',
+    'audio',
+    {
+      type: 'category',
+      label: 'Utility Types',
+      items: ["util-types/color"],
+    }
   ],
 };
 
