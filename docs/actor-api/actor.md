@@ -16,7 +16,6 @@ class MyComponent(pygerm.Component):
         pass
 
 actor = pygerm.Actor("actor1", {"1": MyComponent(), "2": MyComponent()})
-```}})
 ```
 
 ### Actor(kwargs)
