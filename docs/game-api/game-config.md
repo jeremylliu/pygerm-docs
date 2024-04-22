@@ -32,8 +32,7 @@ game_config = GameConfig("path/to/config.json")
 ## Read Write Properties
 In addition to the constructor, you can also set the following properties after the object has been created:
 
-### game_title
-The title of the game window.
+`game_title` The title of the game.
 
 ```python
 game_config = GameConfig()

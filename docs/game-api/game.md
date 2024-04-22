@@ -21,23 +21,18 @@ game = pygerm.Game(GameConfig(), RenderingConfig(), Scene())
 ## Read Write Properties
 Additionally, if you choose to modify some of the configuration values after the constructor as been called (but before run() is called), you can do so by setting the following properties:
 
-### game_config
+`game_config` The GameConfig object that contains the game's configuration values. \
+`rendering_config` The RenderingConfig object that contains the rendering configuration values. \
+`scene` The Scene object that contains the game's starting scene
+
+
 ```python
 game = pygerm.Game()
 game.game_config = GameConfig(game_title="My Game")
-```
-
-### rendering_config
-```python
-game = pygerm.Game()
 game.rendering_config = RenderingConfig(x_resolution=800, y_resolution=600)
-```
-
-### scene
-```python
-game = pygerm.Game()
 game.scene = Scene(name="initial_scene")
 ```
+
 
 ## Methods
 ### run()
@@ -48,4 +43,4 @@ game = pygerm.Game()
 game.run()
 ```
 
-Warning: **THIS FUNCTION DOES NOT RETURN EVEN AFTER THE GAME TERMINATES**
+Warning: **This function does not return, even after the game terminates [pygerm.Application.quit](../application)**

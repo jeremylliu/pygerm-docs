@@ -44,6 +44,7 @@ const sidebars: SidebarsConfig = {
       label: 'Provided Components',
       items: ["prebuilt-components/rigidbody"],
     },
+    'application',
     'input',
     'camera',
     'text',

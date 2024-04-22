@@ -15,7 +15,7 @@ The default constructor for the RenderingConfig class. This constructor initiali
 Warning: **The alpha value of clearColor is ignored by the rendering engine.**
 
 ### RenderingConfig(kwargs)
-You can also initialize a RenderingConfig object with a dictionary of values. This is useful for setting multiple values at once. The argument names are the same as the table listed above.
+You can also initialize a RenderingConfig object with kwargs instead. This is useful for setting multiple values at once. The argument names are the same as the table listed above.
 
 ```python
 rendering_config = RenderingConfig(x_resolution=800, y_resolution=600)
@@ -42,3 +42,18 @@ Additionally, each config class can be initialized with a filepath to a JSON fil
 ```
 
 Warning: **clear_color is replaced with clear_color_r, clear_color_g, and clear_color_b in ONLY the JSON file.**
+
+## Read Write Properties
+`x_resolution` The x resolution of the window in pixels. \
+`y_resolution` The y resolution of the window in pixels. \
+`zoomFactor` The zoom factor of the window. \
+`clearColor` The color that the window is cleared to at the beginning of each frame.
+
+```python
+rendering_config = RenderingConfig()
+
+rendering_config.x_resolution = 800
+rendering_config.y_resolution = 600
+rendering_config.zoomFactor = 2.0
+rendering_config.clearColor = Color(0, 0, 0, 255)
+```
